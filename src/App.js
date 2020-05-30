@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Nav from "./components/Nav";
+import Body from "./components/Body";
+import NavMobile from "./components/NavMobile";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Quiz from "./components/Quiz";
+import ChoicePage from "./components/ChoicePage";
+import TrueFalse from "./components/TrueFalse";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Route path="/quiz" exact component={ChoicePage} />
+        <Route path="/truefalse" exact component={ChoicePage} />
+        <Route path="/" exact component={Body} />
+        <Route path="/truefalsestart" exact component={TrueFalse} />
+        <Route path="/quizstart" exact component={Quiz} />
+        <NavMobile />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
